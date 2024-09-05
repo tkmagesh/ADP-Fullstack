@@ -6,23 +6,35 @@ function onBtnDemoClick() {
   console.error("This is an error"); 
   */
   
+  /* 
   console.time('printPrimes(0,2000)')
   printPrimes(20,2000)
-  console.timeEnd("printPrimes(0,2000)"); 
+  console.timeEnd("printPrimes(0,2000)");  
+  */
  
 //  test_isPrime_11()
     // printGroups()
     // printTable()
+
+    printProductsValue()
+}
+const products = [
+  { id: 100, name: "Pen", units : 10,cost: 10 },
+  { id: 101, name: "Pencil", units : 20,cost: 5 },
+  { id: 102, name: "Marker", units : 5,cost: 50 },
+  { id: 103, name: "Scribble Pad", units : 10,cost: 20 },
+];
+
+function printTable(){    
+    console.table(products)
 }
 
-function printTable(){
-    const products = [
-      { id: 100, name: "Pen", cost: 10 },
-      { id: 101, name: "Pencil", cost: 5 },
-      { id: 102, name: "Marker", cost: 50 },
-      { id: 103, name: "Scribble Pad", cost: 20 },
-    ];
-    console.table(products)
+function printProductsValue(){
+    let productsValue = 0
+    for(let p of products){
+        productsValue += p.cost * p.units;
+    }
+    console.log('Products Value :', productsValue)
 }
 
 function printGroups(){
@@ -62,6 +74,7 @@ function isPrime(no){
             return false
         }
     }
+    debugger;
     console.count('PrimeNo')
     return true
 }

@@ -3,13 +3,23 @@ function onBtnDemoClick(){
     try {
         const multiplier = parseInt(document.getElementById('txtMultiplier').value)
         const divisor = parseInt(document.getElementById('txtDivisor').value)
-        let {quotient:q, remainder:r} = divide(multiplier,divisor)
-        divResult.innerText = `quotient = ${q} and remainder = ${r}`
+        performDivide(multiplier, divisor)
     } catch (e){
         divResult.innerText = e.message
     } finally {
          document.getElementById("txtMultiplier").value = 0;
          document.getElementById("txtDivisor").value = 0;
+    }
+}
+
+function performDivide(multiplier, divisor){
+    try {
+        let { quotient: q, remainder: r } = divide(multiplier, divisor);
+        divResult.innerText = `quotient = ${q} and remainder = ${r}`;
+    }
+    catch (e){
+        console.log(e)
+        throw new Error(`Dividing ${multiplier} by ${divisor}, err : ${e.message}`)
     }
 }
 

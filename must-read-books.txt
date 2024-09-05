@@ -1,0 +1,7 @@
+Refactoring - Martin Fowler
+Head First OOAD 
+Head First Design Patterns
+Refactoring to Patterns
+Agile Principles Patterns & Practices - Robert.C.Martin
+Head First TDD
+Growing Object Oriented Software Guided By Tests

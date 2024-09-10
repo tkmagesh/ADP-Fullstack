@@ -1,0 +1,15 @@
+{
+  "name": "js-pm-demo",
+  "version": "0.1.0",
+  "description": "demo app for js package management",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Magesh K",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.0.0"
+  }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX-VDOM-Fragment</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        .counter {
+            font-size: 16pt;
+            color : red;
+        }
+    </style>
+    <script type="text/babel">
+        let root;
+        let count = 0;
+        function onBtnRenderClick(){
+            
+            ++count
+
+            let appEle = (
+                <div>
+                    <h1>Welcome to React! - [{count}]</h1>
+                    <hr/>
+                    <div>
+                        <label htmlFor="">Counter :</label>
+                        <span className="counter">{count}</span>
+                    </div>
+                    <div>
+                        <h3>Introduction</h3>
+                        <p>Consectetur veniam nulla amet fugiat. Voluptate enim ad officia ut. In excepteur esse labore sint ullamco non irure consectetur duis duis.</p>
+                        <p>Magna dolore aliquip in labore cupidatat commodo adipisicing. Labore ullamco tempor qui consequat. Est dolore aliqua qui labore excepteur. Ex pariatur irure anim nulla.</p>
+                        <p>In exercitation excepteur laborum velit cillum labore irure sunt nulla et enim reprehenderit consequat eiusmod. Non irure culpa mollit occaecat velit aute minim occaecat reprehenderit veniam. Dolor qui sunt occaecat nostrud cupidatat esse sit sunt elit in consectetur laboris sint. Occaecat eu laborum pariatur in.</p>
+                    </div>
+                    <div>
+                        <h3>Advantages</h3>
+                        <ul>
+                            <li>Declarative</li>
+                            <li>Efficient</li>
+                        </ul>
+                    </div>
+                </div>
+            )
+            root.render(appEle);
+        }
+        function onDocumentLoad(){
+            let btnRender = document.getElementById('btnRender');
+            btnRender.addEventListener('click', onBtnRenderClick)
+
+            root = ReactDOM.createRoot(document.getElementById('root'));
+        }
+        window.addEventListener('load', onDocumentLoad);
+    </script>
+</head>
+<body>
+    <button id="btnRender">Render</button>
+   <!-- 
+     <div>
+        <span>Counter :</span>
+        <span id="spanCounter">0</span>
+    </div> 
+    -->
+    <div id="root">
+
+    </div>
+</body>
+</html>

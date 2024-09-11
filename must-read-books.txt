@@ -5,3 +5,9 @@ Refactoring to Patterns
 Agile Principles Patterns & Practices - Robert.C.Martin
 Head First TDD
 Growing Object Oriented Software Guided By Tests
+Patterns of Enterprise Applications Architecture (Martin Fowler)
+7 Databases in 7 weeks
+
+Tools & Techniques
+- curl (tool)
+- Regular Expressions

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        .positive{
+            color : green;
+        }
+        .negative{
+            color : red;
+        }
+    </style>
+    <script type="text/babel">
+        function Calculator(props){
+            
+            const [n1, setN1] = React.useState(0)
+            const [n2, setN2] = React.useState(0)
+            const [result, setResult] = React.useState(0);
+
+            const onAddClick = () => {
+                setResult(n1 + n2);
+            }
+            const onSubtractClick = () => {
+                setResult(n1 - n2);
+            }
+            const onMultiplyClick = () => {
+                setResult(n1 * n2);
+            }
+            const onDivideClick = () => {
+                setResult(n1 / n2);
+            }
+            const onTxtN1Input = evt => setN1(parseInt(evt.target.value))
+            const resultClass = result >= 0 ? 'positive' : 'negative'
+            
+            
+                    
+            return (
+                <div>
+                    <h1>Calculator</h1>
+                    <hr/>
+                    <input type="text" onInput={ onTxtN1Input} />
+                    <input type="text" onInput={ evt => setN2(parseInt(evt.target.value))} />
+                    <br/>
+                    <button onClick={onAddClick}>Add</button>
+                    <button onClick={onSubtractClick}>Subtract</button>
+                    <button onClick={onMultiplyClick}>Multiply</button>
+                    <button onClick={onDivideClick}>Divide</button>
+                    { isNaN(result) ? (<div>Invalid inputs!</div>) : (<div className={resultClass}>{result}</div>)}
+                </div>
+            )
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Calculator/>)
+    </script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+</body>
+</html>

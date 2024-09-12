@@ -8,7 +8,8 @@
     <script src="react-dom.development.js"></script>
     <script src="babel.min.js"></script>
     <script type="text/babel">
-        function Calculator(){
+        function Calculator(props){
+            console.log(props)
             const [n1, setN1] = React.useState(0)
             const [n2, setN2] = React.useState(0)
             const [result, setResult] = React.useState(0);

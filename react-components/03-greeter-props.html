@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeter</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+
+        function Greeter(props){
+
+            // let message = '[default greet message]'
+            let [message, setMessage] = React.useState('[default greet message]');
+            let [userName, setUserName] = React.useState('')
+
+            const onBtnGreetClick = (evt) => {
+                // message = 'greet button clicked'
+                setMessage(`Hi ${userName}, ${props.greetTemplate}`);
+            }
+
+            const onTxtUserNameInput = (evt) => {
+                setUserName(evt.target.value)
+            }
+            return (
+                <div>
+                    <h1>Greeter</h1>
+                    <hr/>
+                    <label htmlFor="">User Name :</label>
+                    <input type="text" onInput={onTxtUserNameInput}/>
+                    <span> [ {userName.length} ] </span>
+                    <button onClick={onBtnGreetClick}>Greet</button>
+                    <div>{message}</div>
+                </div>
+            )
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(
+            <div>
+                <Greeter greetTemplate="Have a nice day!"/>
+                <Greeter greetTemplate="Have a good day!"/>
+            </div>
+        )
+    </script>
+</head>
+<body>
+   <div id="root">
+
+   </div>
+</body>
+</html>

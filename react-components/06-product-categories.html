@@ -10,23 +10,33 @@
 
     <script type="text/babel">
         function App(){
+            let [selectedCategory, setSelectedCategory] = React.useState('');
             let catalog = {
                 "Stationary" : ["Pen", "Pencil", "Marker"],
                 "Electronics" : ["Laptop", "Mous"],
                 "Utencils" : ["Pan"]
             }
             const categoryNames = Object.keys(catalog);
-            const productNames = catalog["Stationary"]
+            
+            const categorySelected = (cn) => {
+                setSelectedCategory(cn);
+            };
+
             return (
                 <>
-                    <Categories list={categoryNames}/>
-                    <Products productNames={productNames}/>
+                    <Categories list={categoryNames} onCategorySelected={categorySelected}/>
+                    <Products productNames={ catalog[selectedCategory] || [] }/>
                 </>
             )
         }
         function Categories(props){
     
-            const categoryButtons = props.list.map(categoryName => (<button key={categoryName}>{categoryName}</button>))
+            const categoryButtons = props.list.map(categoryName => (
+                <button 
+                    key={categoryName}
+                    onClick={() => props.onCategorySelected(categoryName)}
+                >{categoryName}</button>
+            ))
             return (
                 <div>
                     <h3>Categories</h3>

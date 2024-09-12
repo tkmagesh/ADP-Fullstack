@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent-Child</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        function Parent(){
+            let [msgFromChild, setMsgFromChild] = React.useState('')
+            const onMessageFromChild = (msg) => {
+                setMsgFromChild('[parent] message received from child : ' + msg)
+            }
+            return (
+                <>
+                    <h1>Parent</h1>
+                    <Child 
+                        data="some data to be displayed in the child component"
+                        onMessage={onMessageFromChild}
+                    />
+                    <div>{msgFromChild}</div>
+                </>
+            )
+        }
+
+        function Child(props){
+            const onBtnClick = () => {
+                props.onMessage('Button clicked by the user')
+            }
+            return (
+                <>
+                    <h3>Child</h3>
+                    <div>Data from the parent : <span style={{fontStyle:"italic"}}> [{props.data}] </span></div>
+                    <button onClick={onBtnClick}>Message to parent</button>
+                </>
+            )
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<Parent/>)
+    </script>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+</body>
+</html>

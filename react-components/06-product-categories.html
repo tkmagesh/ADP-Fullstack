@@ -16,10 +16,11 @@
                 "Utencils" : ["Pan"]
             }
             const categoryNames = Object.keys(catalog);
+            const productNames = catalog["Stationary"]
             return (
                 <>
                     <Categories list={categoryNames}/>
-                    <Products/>
+                    <Products productNames={productNames}/>
                 </>
             )
         }
@@ -35,14 +36,13 @@
                 </div>
             )
         }
-        function Products(){
+        function Products(props){
+            const productItems = props.productNames.map((productName, idx) => (<li key={idx}>{productName}</li>))
             return (
                 <div>
                     <h3>Products</h3>
                     <ul>
-                        <li>Pen</li>
-                        <li>Pencil</li>
-                        <li>Stapler</li>
+                        {productItems}
                     </ul>
                 </div>
             );

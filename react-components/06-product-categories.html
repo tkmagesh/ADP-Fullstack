@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Categories</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+
+    <script type="text/babel">
+        function App(){
+            let catalog = {
+                "Stationary" : ["Pen", "Pencil", "Marker"],
+                "Electronics" : ["Laptop", "Mous"],
+                "Utencils" : ["Pan"]
+            }
+            const categoryNames = Object.keys(catalog);
+            return (
+                <>
+                    <Categories list={categoryNames}/>
+                    <Products/>
+                </>
+            )
+        }
+        function Categories(props){
+    
+            const categoryButtons = props.list.map(categoryName => (<button key={categoryName}>{categoryName}</button>))
+            return (
+                <div>
+                    <h3>Categories</h3>
+                    <div>
+                        { categoryButtons }
+                    </div>
+                </div>
+            )
+        }
+        function Products(){
+            return (
+                <div>
+                    <h3>Products</h3>
+                    <ul>
+                        <li>Pen</li>
+                        <li>Pencil</li>
+                        <li>Stapler</li>
+                    </ul>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App/>)
+    </script>
+</head>
+<body>
+    <h1>Catalog</h1>
+    <hr>
+    <div id="root">
+
+    </div>
+    
+</body>
+</html>

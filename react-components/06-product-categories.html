@@ -35,11 +35,16 @@
                 <button 
                     key={categoryName}
                     onClick={() => props.onCategorySelected(categoryName)}
-                >{categoryName}</button>
+                >{categoryName} - [0]</button>
             ))
             return (
                 <div>
                     <h3>Categories</h3>
+                     <div>
+                        <label htmlFor="">New Category:</label>
+                        <input type="text" name="" id=""/>
+                        <button>Add</button>
+                    </div>
                     <div>
                         { categoryButtons }
                     </div>
@@ -47,10 +52,22 @@
             )
         }
         function Products(props){
-            const productItems = props.productNames.map((productName, idx) => (<li key={idx}>{productName}</li>))
+            const productItems = props.productNames.map((productName, idx) => (<li key={idx}><span>{productName}</span><button>Remove</button></li>))
             return (
                 <div>
                     <h3>Products</h3>
+                    <h4>Category : ?</h4>
+                    <div>
+                        <label htmlFor="">New Product:</label>
+                        <input type="text" name="" id=""/>
+                        <label htmlFor="">Category :</label>
+                        <select name="" id="">
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>
+                        <button>Add</button>
+                    </div>
                     <ul>
                         {productItems}
                     </ul>

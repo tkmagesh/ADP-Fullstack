@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>useReducer</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        label{
+            display: block;
+        }
+    </style>
+    <script type="text/babel">
+        const initialState = [
+            {id : 1, name : 'Pen', cost : 10},
+            {id : 2, name : 'Pencil', cost : 5},
+            {id : 3, name : 'Marker', cost : 50},
+            {id : 4, name : 'Notepad', cost : 20},
+        ];
+        function productsReducer(state, action){
+            switch (action.type) {
+                case 'ADD':
+                    const newProduct = {
+                        id : state.length + 1,
+                        name : action.payload.name,
+                        cost : action.payload.cost
+                    }
+                    return [...state, newProduct]
+                    break;
+                case 'REMOVE':
+                    return state.filter(p => p.id !== action.payload.id)
+                    break;
+                default:
+                    return state;
+            }
+        }
+        function Products(){
+            const [newProductName, setNewProductName] = React.useState('')
+            const [newProductCost, setNewProductCost] = React.useState(0)
+            const [list, dispatch] = React.useReducer(productsReducer, initialState)
+
+            const onBtnAddNewClick = () => {
+                const newProduct = {
+                    name : newProductName,
+                    cost : newProductCost
+                }
+                const add_action = { type : 'ADD', payload : newProduct };
+                dispatch(add_action)
+            }
+
+            const onBtnRemoveClick = (pid) => {
+                const remove_action = { type : 'REMOVE', payload : {id : pid}}
+                dispatch(remove_action)
+            }
+            return (
+                <>
+                    <h1>Products</h1>
+                    <hr/>
+                    <div>
+                        <div>
+                            <label>Product Name : </label>
+                            <input type="text" onChange={ evt => setNewProductName(evt.currentTarget.value)} />
+                        </div>
+                        <div>
+                            <label>Cost : </label>
+                            <input type="number" onChange={ evt => setNewProductCost(evt.currentTarget.value)} />
+                        </div>
+                        <button onClick={onBtnAddNewClick}>Add New</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Cost</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {list.map(p => (
+                                <tr key={p.id}>
+                                    <td>{p.id}</td>
+                                    <td>{p.name}</td>
+                                    <td>{p.cost}</td>
+                                    <td>
+                                        <button onClick={() => onBtnRemoveClick(p.id)}>Remove</button>
+                                    </td>
+                                </tr>
+                            ))}
+                            
+                        </tbody>
+                    </table>
+                </>
+            )
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Products/>)
+    </script>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+    
+    
+</body>
+</html>

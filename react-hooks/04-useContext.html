@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>useContext</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        section{
+            border : 1px solid gray;
+            padding: 10px;
+        }
+    </style>
+    <script type="text/babel">
+        const UserContext = React.createContext({ user : {name : 'magesh', city : 'Bangalore'}})
+        const Root = () => {
+            return (
+                <section>
+                    <h1>Root</h1>
+                    <Parent1/>
+                </section>
+            )
+        }
+
+        const Parent1 = () => {
+            return (
+                <section>
+                    <h2>Parent-1</h2>
+                    <Parent11/>
+                </section>
+            )
+        }
+
+        const Parent11 = () => {
+            return (
+                <section>
+                    <h3>Parent-11</h3>
+                    <Child/>
+                </section>
+            )
+        }
+
+        const Child = () => {
+            /* 
+            const ctxData = React.useContext(UserContext)
+            console.log(ctxData.user) 
+            */
+           const {user } = React.useContext(UserContext)
+            return (
+                <section>
+                    <h4>Child</h4>
+                    <div>data : {JSON.stringify(user)}</div>
+                </section>
+            )
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Root/>)
+    </script>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+</body>
+</html>

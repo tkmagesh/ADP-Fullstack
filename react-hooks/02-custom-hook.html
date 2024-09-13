@@ -8,47 +8,23 @@
     <script src="react-dom.development.js"></script>
     <script src="babel.min.js"></script>
     <script type="text/babel">
-        // Ver1.0
-        /* function Timer(){
+        // custom Hook
+        function useTimer(interval){
             const [currentTime, setCurrentTime] = React.useState(Date())
-            let [timerId,setTimerId] = React.useState(0)
-            const onBtnStartClick = () => {
-                let timerId = setInterval(() => {
-                    setCurrentTime(Date())    
-                }, 1000);
-                setTimerId(timerId)
-                console.log('[start] timerId = ', timerId)
-            }
-            const onBtnStopClick = () => {
-                console.log('[stop] timerId = ', timerId)
-                clearInterval(timerId)
-            }
-            return (
-                <>
-                <div>
-                    <button onClick={onBtnStartClick}>Start</button>
-                    <button onClick={onBtnStopClick}>Stop</button>
-                </div>
-                <div style={{fontWeight : 'bold'}}>Current Time : </div>
-                <span>{currentTime}</span>
-                </>
-            )
-        } */
-
-        function Timer(){
-            const [currentTime, setCurrentTime] = React.useState(Date())
-            React.useEffect(() => { // function (1) executed whenever the component is initialized / updated
-                
+            React.useEffect(() => { 
                 const timerId = setInterval(() => {
                     setCurrentTime(Date())
-                }, 1000);
+                }, interval);
                 console.log('[useEffect] creating timer - ', timerId )
-                return () => { //function (2) executed when the component is unloaded
+                return () => { 
                     console.log('[useEffect] stopping timer - ', timerId )
                     clearInterval(timerId)
                 }
-            }, [] // [] => to ensure the function(1) is executed ONLY when the component is initialised but not when the component is updated
-            )
+            }, [])
+            return currentTime;
+        }
+        function Timer(){
+            const currentTime = useTimer(1000)
             return (
                 <>
                 <div style={{fontWeight : 'bold'}}>Current Time : </div>

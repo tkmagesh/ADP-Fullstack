@@ -30,6 +30,7 @@ function App() {
           <Route path="/products" element={<Products />}></Route>
           <Route path="/calculator" element={<Calculator />}></Route>
           <Route path="/greeter" element={<Greeter />}></Route>
+          <Route path="*" element={<div>Invalid choice!</div>}></Route>
         </Routes>
       </div>
     </div>

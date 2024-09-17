@@ -4,9 +4,9 @@ import express from 'express'
 const app = express();
 
 const products = [
-  { id: 100, name: "Pen", cosat: 10 },
-  { id: 101, name: "Pencil", cosat: 5 },
-  { id: 102, name: "Marker", cosat: 50 },
+  { id: 100, name: "Pen", cost: 10 },
+  { id: 101, name: "Pencil", cost: 5 },
+  { id: 102, name: "Marker", cost: 50 },
 ];
 
 // json parsing middleware
@@ -22,6 +22,19 @@ app.use(function(req, res, next){
 app.get("/products", function(req, res, next){
     // res.write(JSON.stringify(products));
     // res.end();
+
+    // using querystrings
+    const sortBy = req.query.sort;
+    const desc = req.query.desc;
+    if (sortBy){
+        if (desc && desc === 'true'){
+            products.sort((p1, p2) => p2[sortBy] - p1[sortBy]);
+        } else {
+            products.sort((p1, p2) => p1[sortBy] - p2[sortBy]);
+        }
+        res.json(products)
+        return
+    }
     res.json(products)
 })
 

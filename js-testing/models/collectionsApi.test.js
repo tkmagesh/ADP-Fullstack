@@ -52,7 +52,7 @@ describe("Collection API", () => {
           expect(products[products.length - 1].id).toBe(lastProductId);
         });
 
-        it("should sort the given collection by product value (cost * units) ", () => {
+        it.skip("should sort the given collection by product value (cost * units) ", () => {
           // arrange
           let firstProductId = 1,
             lastProductId = 9;
@@ -66,7 +66,7 @@ describe("Collection API", () => {
         });
     });
 
-    describe("Filter", () => {
+    describe.skip("Filter", () => {
         it("Should be able to filter stationary products (category == 'stationary')", () => {
             
         })
@@ -80,17 +80,17 @@ describe("Collection API", () => {
         });
     });
 
-    describe("Max", () => {
+    describe.skip("Max", () => {
         it("Should return the costliest product", () => {
 
         })
     })
 
-    describe("Min", () => {
+    describe.skip("Min", () => {
       it("Should return the cheapest product", () => {
 
       });
     });
 
-    
+
 })

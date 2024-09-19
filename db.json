@@ -1,0 +1,36 @@
+{
+  "products": [
+    {
+      "id": "100",
+      "name": "pen",
+      "cost": 10,
+      "category_id": 901
+    },
+    {
+      "id": "102",
+      "name": "pencil",
+      "cost": 10,
+      "category_id": 901
+    },
+    {
+      "id": "103",
+      "name": "stylus",
+      "cost": 10,
+      "category_id": 902
+    }
+  ],
+  "categories": [
+    {
+      "id": "901",
+      "name": "stationary"
+    },
+    {
+      "id": "902",
+      "name": "electronics"
+    },
+    {
+      "id": "3ebe",
+      "name": "furniture"
+    }
+  ]
+}

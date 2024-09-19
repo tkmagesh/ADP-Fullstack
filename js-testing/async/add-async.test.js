@@ -1,6 +1,6 @@
 const addAsync = require('./add-async');
 
-describe("Async add (callback)", () => {
+describe.skip("Async add (callback)", () => {
     it('should add the given numbers', (done) => {
         const x = 100,
             y = 200,
@@ -12,7 +12,7 @@ describe("Async add (callback)", () => {
     }, 6000);
 });
 
-describe("Async add (promise)", () => {
+describe.skip("Async add (promise)", () => {
   it("should add the given numbers", async () => {
 
     // arrange

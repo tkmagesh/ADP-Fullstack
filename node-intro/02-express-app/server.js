@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/products", function(req, res, next){
     // res.write(JSON.stringify(products));
     // res.end();
-
+    next(new Error("Dummy error"))
     // using querystrings
     const sortBy = req.query.sort;
     const desc = req.query.desc;

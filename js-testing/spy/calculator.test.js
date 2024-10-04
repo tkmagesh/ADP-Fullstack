@@ -1,4 +1,5 @@
-const Calculator = require('./calculator')
+const Calculator = require('./calculator');
+const ResultWriter = require('./result-writer');
 
 
 /* 
@@ -23,10 +24,14 @@ describe("Calculator", () => {
         // Arrange
 
         
+        /* 
         const resultWriterMock = {
             write : jest.fn()
-        }; 
-       
+        };  
+        */
+        const resultWriterMock = new ResultWriter()
+        jest.spyOn(resultWriterMock, "write")
+
        /* 
         const mockObj = getMock()
         const resultWriterMock = {

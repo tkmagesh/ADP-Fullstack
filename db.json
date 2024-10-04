@@ -17,6 +17,12 @@
       "name": "stylus",
       "cost": 10,
       "category_id": 902
+    },
+    {
+      "id": "f99e",
+      "name": "mouse",
+      "cost": 100,
+      "category_id": 901
     }
   ],
   "categories": [

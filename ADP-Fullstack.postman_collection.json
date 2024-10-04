@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "0c950598-5c1c-4dea-b6c8-e5bfddec8152",
+		"name": "ADP-Fullstack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "8330223"
+	},
+	"item": [
+		{
+			"name": "products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status should be 200\", () => {",
+							"    console.log('a dummy log message')",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjkzMjUxODcwLCJqdGkiOiJmMjVjNjhkYy0yY2E4LTRmOTMtODg3YS01NDFjY2I1ZDYyOTMiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjp7InVzZXJuYW1lIjoidXNlci0yIiwiaXNfYWRtaW4iOnRydWV9LCJuYmYiOjE2OTMyNTE4NzAsImV4cCI6MTY5MzI1Mjc3MCwiaXNfYWRtaW4iOnRydWV9.gJU0zP8e0lrGrmwjlr4Fo2TC2XL-nN3t5n4uqpPS3UE"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{service_endpoint}}/products"
+			},
+			"response": []
+		}
+	]
+}

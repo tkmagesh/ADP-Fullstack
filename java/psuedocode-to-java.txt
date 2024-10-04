@@ -1,0 +1,106 @@
+
+class Product {
+    public int id;
+    public string name;
+    public float cost;
+
+    // implement a toString() method to print 
+}
+
+interface ProductComparer {
+    int compare(Product p1, Product p2)
+}
+
+class ProductComparerById implements ProductComparer{
+    public int compare(Product p1, Product p2){
+        if (p1.id < p2.id){
+            return -1;
+        }
+        if (p1.id > p2.id){
+            return 1;
+        }
+        return 0;
+    }
+}
+
+class ProductComparerByCost implements ProductComparer{
+    public int compare(Product p1, Product p2){
+        if (p1.cost < p2.cost){
+            return -1;
+        }
+        if (p1.cost > p2.cost){
+            return 1;
+        }
+        return 0;
+    }
+}
+
+class ProductComparerByUnits implements ProductComparer {
+    public int compare(Product p1, Product p2){
+        if (p1.units < p2.units){
+            return -1;
+        }
+        if (p1.units > p2.units){
+            return 1;
+        }
+        return 0;
+    }
+}
+
+class ProductsCollection {
+    ArrayList list = new ArrayList();
+
+    public void add(Product p){
+        this.list.add(p);
+    }
+
+    public Product getById(){
+        return this.list.get(0);
+    }
+
+    public void Print(){
+        // print the products list
+    }
+
+    public void sort(ProductComparer comparerObj){
+        // var comparerObj = new ProductComparer() // => violation of DIP
+        for(var i = 0; i < this.list.size()-1; i++){
+            for(var j = i+1; j < this.list.size(); j++){
+                if (comparerObj.compare(list[i], list[j]) > 0){
+                    var temp = list[i];
+                    list[i] = list[j];
+                    list[j] = temp;
+                }
+            }
+        }
+    }
+    
+}
+
+class Main{
+    public static void main(){
+        var products = new ProductsCollection();
+        products.add(new Product(/* ?? */));
+        products.add(new Product(/* ?? */));
+        products.add(new Product(/* ?? */));
+
+        System.out.println("Initial List");
+        products.print()
+
+        System.out.println("Sort by id");
+        var comparerById = new ProductComparerById();
+        products.sort(comparerById);
+        products.print();
+
+        System.out.println("Sort by cost");
+        var comparerByCost = new ProductComparerByCost()
+        products.sort(comparerByCost)
+        products.print();
+
+        System.out.println("Sort by units");
+        var comparerByUnits = new ProductComparerByUnits()
+        products.sort(comparerByUnits)
+        products.print();
+    }
+}
+
